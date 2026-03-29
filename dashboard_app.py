@@ -21,8 +21,8 @@ with st.sidebar:
 @st.cache_data
 def load_sample_data():
     # サンプルデータパス
-    purchase_path = '/sessions/clever-magical-franklin/mnt/outputs/野菜_仕入れ数量表.xlsx'
-    sales_path = '/sessions/clever-magical-franklin/mnt/outputs/野菜_販売数量表.xlsx'
+    purchase_path = '野菜_仕入れ数量表.xlsx'
+    sales_path = '野菜_仕入れ販売数量表.xlsx'
 
     df_purchase = pd.read_excel(purchase_path)
     df_sales = pd.read_excel(sales_path)
