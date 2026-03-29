@@ -1,4 +1,3 @@
-```toml
 [theme]
 primaryColor = "#4472C4"
 backgroundColor = "#FFFFFF"
@@ -14,4 +13,3 @@ toolbarMode = "viewer"
 headless = true
 runOnSave = true
 maxUploadSize = 200
-```
