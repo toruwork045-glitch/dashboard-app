@@ -20,12 +20,21 @@ with st.sidebar:
 # データ読み込み関数
 @st.cache_data
 def load_sample_data():
-    # サンプルデータパス
-    purchase_path = '野菜_仕入れ数量表.xlsx'
-    sales_path = '野菜_仕入れ販売数量表.xlsx'
+        # サンプルデータパス
+        purchase_path = '野菜_仕入れ数量表.xlsx'
+        sales_path = '野菜_仕入れ販売数量表.xlsx'
 
-    df_purchase = pd.read_excel(purchase_path)
-    df_sales = pd.read_excel(sales_path)
+    # 仕入れデータ読み込み
+    xl_purchase = pd.ExcelFile(purchase_path)
+    sheet_purchase = xl_purchase.sheet_names[0]
+    df_purchase = pd.read_excel(purchase_path, sheet_name=sheet_purchase)
+
+    # 販売データ読み込み（シート名を自動検出）
+    xl_sales = pd.ExcelFile(sales_path)
+    sales_sheets = xl_sales.sheet_names
+    # 「販売」を含むシートを優先、なければ最後のシート
+    sales_sheet = next((s for s in sales_sheets if '販売' in s), sales_sheets[-1])
+    df_sales = pd.read_excel(sales_path, sheet_name=sales_sheet)
 
     return df_purchase, df_sales
 
